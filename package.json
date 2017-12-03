@@ -1,0 +1,33 @@
+{
+    "name": "@forfuture/migrate",
+    "version": "0.0.0",
+    "description": "Database-agnostic Migration framework",
+    "author": {
+        "name": "forfuture",
+        "email": "we@forfuture.co.ke",
+        "url": "https://forfuture.tech"
+    },
+    "main": "lib/index",
+    "bin": {
+        "migrate": "bin/migrate"
+    },
+    "scripts": {
+        "test": "npm run test:lint && npm run test:unit",
+        "test:lint": "eslint .",
+        "test:unit": "ava test/unit/*.js"
+    },
+    "dependencies": {
+        "asyncawait": "^1.0.6",
+        "bluebird": "^3.5.1",
+        "commander": "^2.12.2",
+        "debug": "^3.1.0",
+        "semver": "^5.4.1"
+    },
+    "peerDependencies": {
+        "sequelize": "4.x.x"
+    },
+    "devDependencies": {
+        "ava": "^0.24.0",
+        "eslint": "^4.12.1"
+    }
+}
