@@ -49,7 +49,9 @@ $ npx migrate --help
 ## installation
 
 ```bash
-$ npm install gitlab:forfuture/migrate#semver:0.0.0
+# Replace '0.0.0' with the latest version.
+# See git tags.
+$ npm install gitlab:forfuture/migrate#0.0.0
 ```
 
 
