@@ -18,12 +18,19 @@
 # Assume we are in version 1.0.0 already (using the --current option).
 $ npx migrate --current 1.0.0
 
+# From now on, we do NOT need to specify the --current option.
+# The tool keeps history.
+
 # ... new migrations added ...
 
-# Run migrations.
-# No need to specify which version we are in! The tool
-# keeps history.
+# Migrate to the application's current version as
+# specified in the relevant package.json.
+# We expect to find package.json in the current working
+# directory. Otherwise, specify the --pkg option.
 $ npx migrate
+
+# Migrate to the latest version.
+$ npx migrate --latest
 
 # Migrate to a specific version (e.g. 1.4.0).
 $ npx migrate 1.4.0
