@@ -26,7 +26,7 @@ $ npx migrate --current 1.0.0
 # Migrate to the application's current version as
 # specified in the relevant package.json.
 # We expect to find package.json in the current working
-# directory. Otherwise, specify the --pkg option.
+# directory. Otherwise, specify the --package-path option.
 $ npx migrate
 
 # Migrate to the latest version.
