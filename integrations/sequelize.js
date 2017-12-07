@@ -29,6 +29,9 @@ const MigrationModel = {
 
 
 function toMigration(migration) {
+    if (!migration) {
+        return null;
+    }
     return {
         version: migration.version,
         migratedAt: migration.migratedAt,

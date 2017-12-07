@@ -19,6 +19,10 @@ Changed:
   relevant package file (e.g. `package.json`). Use `--latest` CLI
   option to revert to earlier behaviour.
 
+Fixed:
+
+* **integrations/sequelize:** Fix running on a fresh database
+
 
 ## 0.0.0 - 2017-12-02
 
