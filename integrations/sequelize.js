@@ -73,6 +73,7 @@ class SequelizeIntegration {
             current: toMigration(migrations[0]),
             previous: toMigration(migrations[1]),
         };
+        // TODO: Document the context provided to migration modules.
         const context = {
             sequelize: this.sequelize,
             transaction: this._transaction,
