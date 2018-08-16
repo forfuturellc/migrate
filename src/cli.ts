@@ -123,6 +123,8 @@ export async function main() {
         return await exit(error);
     }
 
+    return await exit();
+
     async function exit(error?: Error) {
         if (projectHandle) {
             await migrate.project.closeProject(projectHandle, error);

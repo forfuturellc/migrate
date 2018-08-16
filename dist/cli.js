@@ -114,6 +114,7 @@ function main() {
         catch (error) {
             return yield exit(error);
         }
+        return yield exit();
         function exit(error) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (projectHandle) {
