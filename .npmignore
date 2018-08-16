@@ -1,12 +1,20 @@
-###
-### FROM .gitignore
-###
-
 # dependencies
 node_modules
 package-lock.json
 
-###
-.eslintrc.yml
-.gitignore
+# TypeScript
+tsconfig.json
+
+# tests
+tslint.json
 test
+dist-test
+
+# editor
+.editorconfig
+
+# SCM
+.gitignore
+
+# output of `npm pack`
+forfuture-migrate-*.tgz

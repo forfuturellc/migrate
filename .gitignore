@@ -1,3 +1,9 @@
 # dependencies
 node_modules
 package-lock.json
+
+# compilation output
+dist-test
+
+# `npm pack` output
+forfuture-migrate-*.tgz
