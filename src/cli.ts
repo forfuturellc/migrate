@@ -118,7 +118,7 @@ export async function main() {
     }
 
     try {
-        await migrate.project.migrateProject(projectHandle, migrateThroughVersions);
+        await migrate.project.migrateProject(projectHandle, targetVersion, migrateThroughVersions);
     } catch (error) {
         return await exit(error);
     }

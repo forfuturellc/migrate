@@ -48,7 +48,7 @@ test("lib/project.getProjectMigration()", async function(t) {
 
 
 test("lib/project.migrateProject()", async function(t) {
-    await migrateProject(projectHandle, ["1.0.0"]);
+    await migrateProject(projectHandle, "1.0.0", ["1.0.0"]);
     const migrated = await getRecordedMigrations();
     t.deepEqual(migrated, [["up", "1.0.0"]]);
     t.is(projectHandle.dbVersions.previous, "0.1.0");

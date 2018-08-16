@@ -63,9 +63,10 @@ export declare function getProjectMigration(projectHandle: IProjectHandle, versi
 /**
  * Migrate the project.
  * @param projectHandle Project handle
- * @param targetVersions Versions to migrate through
+ * @param targetVersion Final target version
+ * @param migrateThroughVersions Versions to migrate through
  */
-export declare function migrateProject(projectHandle: IProjectHandle, targetVersions: string[]): Promise<void>;
+export declare function migrateProject(projectHandle: IProjectHandle, targetVersion: string, migrateThroughVersions: string[]): Promise<void>;
 /**
  * Open project, with configuration file at `configPath`.
  * @param configPath Path to project file

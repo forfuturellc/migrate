@@ -59,23 +59,26 @@ exports.getProjectMigration = getProjectMigration;
 /**
  * Migrate the project.
  * @param projectHandle Project handle
- * @param targetVersions Versions to migrate through
+ * @param targetVersion Final target version
+ * @param migrateThroughVersions Versions to migrate through
  */
-function migrateProject(projectHandle, targetVersions) {
+function migrateProject(projectHandle, targetVersion, migrateThroughVersions) {
     return __awaiter(this, void 0, void 0, function* () {
         debug(`migrating project currently at version ${projectHandle.dbVersions.current}`);
         projectHandle.dbVersions.previous = projectHandle.dbVersions.current;
-        for (const target of targetVersions) {
-            const migration = yield getProjectMigration(projectHandle, target);
-            const doUpgrade = versions_1.isVersionAscending(projectHandle.dbVersions.current, target);
+        for (const migrateVersion of migrateThroughVersions) {
+            const migration = yield getProjectMigration(projectHandle, migrateVersion);
+            const doUpgrade = versions_1.isVersionAscending(projectHandle.dbVersions.current, migrateVersion);
             if (doUpgrade) {
+                debug(`migrating project up to version ${migrateVersion}`);
                 yield migration.up(projectHandle.context);
             }
             else {
+                debug(`migrating project down from version ${migrateVersion}`);
                 yield migration.down(projectHandle.context);
             }
-            projectHandle.dbVersions.current = target;
         }
+        projectHandle.dbVersions.current = targetVersion;
         projectHandle.isMigrated = true;
     });
 }

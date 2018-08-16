@@ -109,7 +109,7 @@ function main() {
             return yield exit();
         }
         try {
-            yield migrate.project.migrateProject(projectHandle, migrateThroughVersions);
+            yield migrate.project.migrateProject(projectHandle, targetVersion, migrateThroughVersions);
         }
         catch (error) {
             return yield exit(error);
