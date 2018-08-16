@@ -33,7 +33,8 @@ program
     .option("-u, --undo", "undo last migration")
     .option("-l, --list", "list available data versions")
     .option("-w, --which", "show current data version")
-    .option("-t, --history", "show migration history");
+    .option("-t, --history", "show migration history")
+    .option("-f, --force", "force migration");
 /** Main entry point for program. */
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -96,7 +97,7 @@ function main() {
                 return fail("<version> arg not provided");
             }
         }
-        if (versions.indexOf(targetVersion) === -1) {
+        if (!program.force && versions.indexOf(targetVersion) === -1) {
             return fail("target data version not available");
         }
         if (currentVersion === targetVersion) {

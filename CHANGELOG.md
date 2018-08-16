@@ -6,6 +6,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+Added:
+
+- CLI options:
+  + `-f, --force`: force migration to be executed
+
 Changed:
 
 - Codebase refactored to TypeScript
