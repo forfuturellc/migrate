@@ -1,6 +1,6 @@
 {
   "name": "@forfuture/migrate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Database-agnostic Migration framework",
   "author": {
     "name": "forfuture",
