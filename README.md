@@ -15,8 +15,13 @@
 # manage database migrations, using this tool.
 
 # Run migrations.
-# Assume we are in version 1.0.0 already (using the --current option).
-$ npx migrate --current 1.0.0
+# The tool does not know which database version you are currently at.
+# We need to explicitly specify this using the `--current` options.
+# Let's assume we are at version `1.0.0` and we want to migrate to
+# another version i.e. `1.1.0`
+$ npx migrate \
+    --current 1.0.0 \
+    1.1.0
 
 # From now on, we do NOT need to specify the --current option.
 # The tool keeps history.
@@ -25,11 +30,9 @@ $ npx migrate --current 1.0.0
 
 # Migrate to the application's current version as
 # specified in the relevant package.json.
-# We expect to find package.json in the current working
-# directory. Otherwise, specify the --package-path option.
-$ npx migrate
+$ npx migrate --package-path ./package.json
 
-# Migrate to the latest version.
+# Migrate to the latest version available.
 $ npx migrate --latest
 
 # Migrate to a specific version (e.g. 1.4.0).
@@ -41,7 +44,7 @@ $ npx migrate --undo
 # List available migrations/versions.
 $ npx migrate --list
 
-# Show current data version.
+# Show current database version we are at.
 $ npx migrate --which
 
 # Show a brief history of migrations.
