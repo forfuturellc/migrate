@@ -3,8 +3,8 @@
  * Copyright (c) 2017 Forfuture, LLC <we@forfuture.co.ke>
  */
 /**
- * Return a sorted list of versions in the range starting at
- * `from` and ending at `to` (inclusive).
+ * Return a sorted list of versions that would need to be
+ * migrated through to move from version `from` to version `to`.
  * @param versions Versions to search through
  * @param from Current version
  * @param to Target version

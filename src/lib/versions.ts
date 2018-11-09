@@ -17,8 +17,8 @@ const debug = Debug("@forfuture/migrate:lib:versions");
 
 
 /**
- * Return a sorted list of versions in the range starting at
- * `from` and ending at `to` (inclusive).
+ * Return a sorted list of versions that would need to be
+ * migrated through to move from version `from` to version `to`.
  * @param versions Versions to search through
  * @param from Current version
  * @param to Target version
@@ -27,7 +27,8 @@ export function findVersionsInRange(versions: string[], from: string, to: string
     const isAscending = isVersionAscending(from, to);
     const [min, max] = isAscending ? [from, to] : [to, from];
     return versions.filter(function(version) {
-        return (semver.gte(version, min) && semver.lte(version, max));
+        if (version === min) { return false; }
+        return (semver.gt(version, min) && semver.lte(version, max));
     }).sort(isAscending ? semver.compare : semver.rcompare);
 }
 
