@@ -6,6 +6,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+
+## 0.2.1 - 2018-11-12
+
 Fixed:
 
 - Determining versions to migrate through (up/down).
