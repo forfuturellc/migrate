@@ -65,7 +65,7 @@ export async function getVersions(migrationsPath: string) {
                 }
                 return reject(error);
             }
-            const stats = await Promise.all(filenames.map(function(file) {
+            const stats = await Promise.all<fs.Stats>(filenames.map(function(file) {
                 return new Promise(function(resolve2, reject2) {
                     fs.stat(path.join(migrationsPath, file), function(error2, stats2) {
                         if (error2) { return reject2(error2); }
@@ -73,7 +73,7 @@ export async function getVersions(migrationsPath: string) {
                     });
                 });
             }));
-            resolve(filenames.map((filename, index) => [filename, stats[index]]));
+            resolve(filenames.map<[string, fs.Stats]>((filename, index) => [filename, stats[index]]));
         });
     }) as [string, fs.Stats][];
     const versions = migrations
