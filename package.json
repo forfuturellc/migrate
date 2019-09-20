@@ -26,22 +26,22 @@
     "pretest:unit": "npm run build"
   },
   "dependencies": {
-    "commander": "^2.12.2",
-    "debug": "^3.1.0",
-    "semver": "^5.5.1"
+    "commander": "^3.0.1",
+    "debug": "^4.1.1",
+    "semver": "^6.3.0"
   },
   "peerDependencies": {
     "sequelize": "4.x.x"
   },
   "devDependencies": {
-    "@types/debug": "0.0.30",
-    "@types/node": "^10.7.1",
-    "@types/semver": "^5.5.0",
-    "@types/sequelize": "^4.27.24",
-    "ava": "^0.25.0",
-    "rimraf": "^2.6.2",
-    "sequelize": "^4.38.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
+    "@types/debug": "^4.1.5",
+    "@types/node": "^12.7.5",
+    "@types/semver": "^6.0.2",
+    "@types/sequelize": "^4.28.4",
+    "ava": "^2.4.0",
+    "rimraf": "^3.0.0",
+    "sequelize": "^4.42.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
   }
 }
