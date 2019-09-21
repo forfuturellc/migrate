@@ -6,7 +6,6 @@
 // own modules
 import { ICLIState } from "../types";
 
-
 export async function which(state: ICLIState) {
     console.log(state.project.dbVersions.current);
 }

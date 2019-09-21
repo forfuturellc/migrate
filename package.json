@@ -1,47 +1,56 @@
 {
-  "name": "@forfuture/migrate",
-  "version": "0.2.1",
-  "description": "Database-agnostic Migration framework",
-  "author": {
-    "name": "forfuture",
-    "email": "we@forfuture.co.ke",
-    "url": "https://forfuture.tech"
-  },
-  "main": "dist/lib/index",
-  "bin": {
-    "migrate": "bin/migrate"
-  },
-  "scripts": {
-    "build": "npm run build:src && npm run build:test",
-    "build:src": "tsc --project src",
-    "build:test": "tsc --project test",
-    "clean:dist": "rimraf dist",
-    "clean:dist-test": "rimraf dist-test",
-    "test": "npm run test:lint && npm run test:unit",
-    "test:lint": "tslint src/**/*.ts test/**/*.ts",
-    "test:unit": "ava dist-test/unit/**/test.*.js",
-    "prebuild:src": "npm run clean:dist",
-    "prebuild:test": "npm run clean:dist-test",
-    "precommit": "npm run build:src && git add dist",
-    "pretest:unit": "npm run build"
-  },
-  "dependencies": {
-    "commander": "^3.0.1",
-    "debug": "^4.1.1",
-    "semver": "^6.3.0"
-  },
-  "peerDependencies": {
-    "sequelize": "4.x.x"
-  },
-  "devDependencies": {
-    "@types/debug": "^4.1.5",
-    "@types/node": "^12.7.5",
-    "@types/semver": "^6.0.2",
-    "@types/sequelize": "^4.28.4",
-    "ava": "^2.4.0",
-    "rimraf": "^3.0.0",
-    "sequelize": "^4.42.0",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
-  }
+    "name": "@forfuture/migrate",
+    "version": "0.2.1",
+    "description": "Database-agnostic Migration framework",
+    "author": {
+        "name": "forfuture",
+        "email": "we@forfuture.co.ke",
+        "url": "https://forfuture.tech"
+    },
+    "main": "dist/lib/index",
+    "bin": {
+        "migrate": "bin/migrate"
+    },
+    "scripts": {
+        "build": "npm run build:src && npm run build:test",
+        "build:src": "tsc --project src",
+        "build:test": "tsc --project test",
+        "clean:dist": "rimraf dist",
+        "clean:dist-test": "rimraf dist-test",
+        "format": "prettier --write '{src,test}/**/*.{json,ts}' '*.json'",
+        "test": "npm run test:lint && npm run test:unit",
+        "test:lint": "tslint src/**/*.ts test/**/*.ts",
+        "test:unit": "ava dist-test/unit/**/test.*.js",
+        "prebuild:src": "npm run clean:dist",
+        "prebuild:test": "npm run clean:dist-test",
+        "precommit": "lint-staged",
+        "pretest:unit": "npm run build"
+    },
+    "dependencies": {
+        "commander": "^3.0.1",
+        "debug": "^4.1.1",
+        "semver": "^6.3.0"
+    },
+    "peerDependencies": {
+        "sequelize": "4.x.x"
+    },
+    "devDependencies": {
+        "@types/debug": "^4.1.5",
+        "@types/node": "^12.7.5",
+        "@types/semver": "^6.0.2",
+        "@types/sequelize": "^4.28.4",
+        "ava": "^2.4.0",
+        "lint-staged": "^9.2.5",
+        "prettier": "^1.18.2",
+        "rimraf": "^3.0.0",
+        "sequelize": "^4.42.0",
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.3"
+    },
+    "prettier": {
+        "arrowParens": "always",
+        "endOfLine": "lf",
+        "tabWidth": 4,
+        "trailingComma": "all"
+    }
 }

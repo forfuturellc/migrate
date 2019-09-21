@@ -6,9 +6,7 @@
 import * as migrate from "../../dist/lib";
 import { recordCompletion } from "./migrations/utils";
 
-
 export const context = { isContext: true };
-
 
 export async function init(): Promise<migrate.project.IProjectState> {
     return {

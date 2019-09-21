@@ -3,7 +3,6 @@
  * Copyright (c) 2017 Forfuture, LLC <we@forfuture.co.ke>
  */
 
-
 // own modules
 import {
     assertContext,
@@ -14,13 +13,11 @@ import {
 // module variables
 const version = "0.0.0";
 
-
 export async function up(context: any) {
     assertContext(context);
     await recordMigratedVersion("up", version);
     await setCurrentVersion(version);
 }
-
 
 export async function down(context: any) {
     assertContext(context);

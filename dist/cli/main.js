@@ -94,7 +94,9 @@ function setup(options = {}) {
             paths: {
                 config: path.resolve(program.configPath),
                 migrations: path.resolve(program.migrationsPath),
-                package: program.packagePath ? path.resolve(program.packagePath) : null,
+                package: program.packagePath
+                    ? path.resolve(program.packagePath)
+                    : null,
             },
         };
         if (!options.noProject) {
@@ -119,11 +121,12 @@ function fail(error) {
     console.error(`error: ${message}`);
     if (isError) {
         const padding = "    ";
-        const stack = padding + error.stack
-            .split("\n")
-            .slice(1)
-            .map((line) => line.trim())
-            .join(`\n${padding}`);
+        const stack = padding +
+            error.stack
+                .split("\n")
+                .slice(1)
+                .map((line) => line.trim())
+                .join(`\n${padding}`);
         console.error(stack);
     }
     process.exit(1);

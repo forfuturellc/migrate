@@ -3,7 +3,6 @@
  * Copyright (c) 2017 Forfuture, LLC <we@forfuture.co.ke>
  */
 
-
 // built-in versions
 import * as path from "path";
 
@@ -11,7 +10,6 @@ import * as path from "path";
 const paths = {
     testData: path.resolve(__dirname, "../data"),
 };
-
 
 /**
  * Common paths.

@@ -31,12 +31,14 @@ const debug = Debug("@forfuture/migrate:lib:versions");
 function findVersionsInRange(versions, from, to) {
     const isAscending = isVersionAscending(from, to);
     const [min, max] = isAscending ? [from, to] : [to, from];
-    return versions.filter(function (version) {
+    return versions
+        .filter(function (version) {
         if (version === min) {
             return false;
         }
-        return (semver.gt(version, min) && semver.lte(version, max));
-    }).sort(isAscending ? semver.compare : semver.rcompare);
+        return semver.gt(version, min) && semver.lte(version, max);
+    })
+        .sort(isAscending ? semver.compare : semver.rcompare);
 }
 exports.findVersionsInRange = findVersionsInRange;
 /**
@@ -62,7 +64,7 @@ exports.getOldestVersion = getOldestVersion;
 function getVersions(migrationsPath) {
     return __awaiter(this, void 0, void 0, function* () {
         debug(`retrieving data versions at ${migrationsPath}`);
-        const migrations = yield new Promise(function (resolve, reject) {
+        const migrations = (yield new Promise(function (resolve, reject) {
             fs.readdir(migrationsPath, function (error, filenames) {
                 return __awaiter(this, void 0, void 0, function* () {
                     if (error) {
@@ -81,10 +83,13 @@ function getVersions(migrationsPath) {
                             });
                         });
                     }));
-                    resolve(filenames.map((filename, index) => [filename, stats[index]]));
+                    resolve(filenames.map((filename, index) => [
+                        filename,
+                        stats[index],
+                    ]));
                 });
             });
-        });
+        }));
         const versions = migrations
             // Ignore sourcemap files, type-definition files
             .filter(function ([filename, stats]) {

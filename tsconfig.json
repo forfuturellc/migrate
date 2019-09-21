@@ -1,22 +1,14 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "es2015"
-    ],
-    "module": "commonjs",
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "target": "es6",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "dist-test"
-  ]
+    "compilerOptions": {
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2015"],
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "target": "es6",
+        "typeRoots": ["node_modules/@types"]
+    },
+    "exclude": ["node_modules", "dist", "dist-test"]
 }

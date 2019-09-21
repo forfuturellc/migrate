@@ -3,7 +3,6 @@
  * Copyright (c) 2017 Forfuture, LLC <we@forfuture.co.ke>
  */
 
-
 // built-in modules
 import * as path from "path";
 
@@ -15,7 +14,6 @@ import { isVersionAscending } from "./versions";
 
 // module variables
 const debug = Debug("@forfuture/migrate:lib:project");
-
 
 /** Migration output. */
 export interface IMigrationOutput {
@@ -67,13 +65,15 @@ export interface IProjectState {
     complete: (error: Error, output: IMigrationOutput) => Promise<any>;
 }
 
-
 /**
  * Close project.
  * @param projectHandle Project handle
  * @param error Any error that might have occurred
  */
-export async function closeProject(projectHandle: IProjectHandle, error: Error) {
+export async function closeProject(
+    projectHandle: IProjectHandle,
+    error: Error,
+) {
     debug(`closing project with config file at ${projectHandle.configPath}`);
     let output;
     if (projectHandle.isMigrated) {
@@ -84,15 +84,20 @@ export async function closeProject(projectHandle: IProjectHandle, error: Error) 
     await projectHandle.complete(error, output);
 }
 
-
 /**
  * Retrieve migration for a version.
  * @param projectHandle Project handle
  * @param version Version handled by the migration
  */
-export async function getProjectMigration(projectHandle: IProjectHandle, version: string) {
+export async function getProjectMigration(
+    projectHandle: IProjectHandle,
+    version: string,
+) {
     debug(`retrieving project migration for version ${version}`);
-    const migrationModule = require(path.join(projectHandle.migrationsPath, version));
+    const migrationModule = require(path.join(
+        projectHandle.migrationsPath,
+        version,
+    ));
     const migration: IProjectMigration = {
         version,
         up: migrationModule.up,
@@ -101,19 +106,30 @@ export async function getProjectMigration(projectHandle: IProjectHandle, version
     return migration;
 }
 
-
 /**
  * Migrate the project.
  * @param projectHandle Project handle
  * @param targetVersion Final target version
  * @param migrateThroughVersions Versions to migrate through
  */
-export async function migrateProject(projectHandle: IProjectHandle, targetVersion: string, migrateThroughVersions: string[]) {
-    debug(`migrating project currently at version ${projectHandle.dbVersions.current}`);
+export async function migrateProject(
+    projectHandle: IProjectHandle,
+    targetVersion: string,
+    migrateThroughVersions: string[],
+) {
+    debug(
+        `migrating project currently at version ${projectHandle.dbVersions.current}`,
+    );
     projectHandle.dbVersions.previous = projectHandle.dbVersions.current;
     for (const migrateVersion of migrateThroughVersions) {
-        const migration = await getProjectMigration(projectHandle, migrateVersion);
-        const doUpgrade = isVersionAscending(projectHandle.dbVersions.current, migrateVersion);
+        const migration = await getProjectMigration(
+            projectHandle,
+            migrateVersion,
+        );
+        const doUpgrade = isVersionAscending(
+            projectHandle.dbVersions.current,
+            migrateVersion,
+        );
         if (doUpgrade) {
             debug(`migrating project up to version ${migrateVersion}`);
             await migration.up(projectHandle.context);
@@ -126,16 +142,18 @@ export async function migrateProject(projectHandle: IProjectHandle, targetVersio
     projectHandle.isMigrated = true;
 }
 
-
 /**
  * Open project, with configuration file at `configPath`.
  * @param configPath Path to project file
  * @param migrationsPath Path to migration modules
  */
-export async function openProject(configPath: string, migrationsPath: string): Promise<IProjectHandle> {
+export async function openProject(
+    configPath: string,
+    migrationsPath: string,
+): Promise<IProjectHandle> {
     debug(`opening project with config file at ${configPath}`);
     const config = require(configPath);
-    const initRet = await config.init() as IProjectState;
+    const initRet = (await config.init()) as IProjectState;
     return {
         ...initRet,
         configPath,

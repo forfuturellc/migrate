@@ -6,7 +6,6 @@
 // own modules
 import * as migrate from "../lib";
 
-
 export interface ICLIState {
     paths: {
         config: string;

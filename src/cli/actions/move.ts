@@ -14,13 +14,15 @@ import { getVersions, migrate } from "./utils";
 // module variables
 const debug = Debug("@forfuture/migrate:cli");
 
-
-export async function move(state: ICLIState, options: {
-    force?: boolean,
-    target?: string;
-    toLatestVersion?: boolean;
-    usePackage?: boolean;
-} = {}) {
+export async function move(
+    state: ICLIState,
+    options: {
+        force?: boolean;
+        target?: string;
+        toLatestVersion?: boolean;
+        usePackage?: boolean;
+    } = {},
+) {
     const versions = await getVersions(state);
     let targetVersion: string;
 
@@ -43,7 +45,9 @@ export async function move(state: ICLIState, options: {
     }
 
     if (state.project.dbVersions.current === targetVersion) {
-        debug(`current data version same as target data version (${targetVersion})`);
+        debug(
+            `current data version same as target data version (${targetVersion})`,
+        );
         return;
     }
 

@@ -4,4 +4,4 @@
  */
 import * as project from "./project";
 import * as versions from "./versions";
-export { project, versions, };
+export { project, versions };

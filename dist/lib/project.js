@@ -93,7 +93,7 @@ function openProject(configPath, migrationsPath) {
     return __awaiter(this, void 0, void 0, function* () {
         debug(`opening project with config file at ${configPath}`);
         const config = require(configPath);
-        const initRet = yield config.init();
+        const initRet = (yield config.init());
         return Object.assign(Object.assign({}, initRet), { configPath,
             migrationsPath, isMigrated: false });
     });

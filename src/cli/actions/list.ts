@@ -7,7 +7,6 @@
 import * as migrate from "../../lib";
 import { ICLIState } from "../types";
 
-
 export async function list(state: ICLIState) {
     const versions = await migrate.versions.getVersions(state.paths.migrations);
     console.log(versions);

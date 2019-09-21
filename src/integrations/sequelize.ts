@@ -3,13 +3,11 @@
  * Copyright (c) 2017 Forfuture, LLC <we@forfuture.co.ke>
  */
 
-
 // installed modules
 import * as Sequelize from "sequelize";
 
 // own modules
 import * as migrate from "../lib";
-
 
 /** Context passed to migration modules. */
 export interface ISequelizeIntegrationContext {
@@ -19,19 +17,16 @@ export interface ISequelizeIntegrationContext {
     transaction: Sequelize.Transaction;
 }
 
-
 /** Constructor options for `SequelizeIntegration`. */
 export interface ISequelizeIntegrationOptions {
     /** Name for table used to store migration data. */
     tableName?: string;
 }
 
-
 /** Default construction options. */
 export const defaultIntegrationOptions: ISequelizeIntegrationOptions = {
     tableName: "db_migrations",
 };
-
 
 /** DB model definition for a migration. */
 export const MigrationModel = {
@@ -51,7 +46,6 @@ export const MigrationModel = {
     },
 };
 
-
 /** Integration for Sequelize ORM. */
 export class SequelizeIntegration {
     private Model: Sequelize.Model<any, any>;
@@ -63,9 +57,13 @@ export class SequelizeIntegration {
         private options: ISequelizeIntegrationOptions = {},
     ) {
         this.options = Object.assign({}, defaultIntegrationOptions, options);
-        this.Model = this.sequelize.define("DatabaseMigration", MigrationModel, {
-            tableName: this.options.tableName,
-        });
+        this.Model = this.sequelize.define(
+            "DatabaseMigration",
+            MigrationModel,
+            {
+                tableName: this.options.tableName,
+            },
+        );
     }
 
     public async integrate(): Promise<migrate.project.IProjectState> {
@@ -78,7 +76,8 @@ export class SequelizeIntegration {
             transaction: this.transaction,
         });
         this.isEmpty = !migrations.length;
-        const getVersion = (migration) => migration ? migration.version : null;
+        const getVersion = (migration) =>
+            migration ? migration.version : null;
 
         return {
             dbVersions: {
@@ -93,7 +92,10 @@ export class SequelizeIntegration {
         };
     }
 
-    private async close(error: Error, output: migrate.project.IMigrationOutput) {
+    private async close(
+        error: Error,
+        output: migrate.project.IMigrationOutput,
+    ) {
         if (error || !output) {
             await this.transaction.rollback();
             await this.sequelize.close();
