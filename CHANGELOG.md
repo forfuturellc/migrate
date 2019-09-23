@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Unreleased
 
 
+## 0.2.2 - 2019-09-23
+
+Fixed:
+
+- Codebase refactored.
+- Dependencies updated.
+
+
 ## 0.2.1 - 2018-11-12
 
 Fixed:
