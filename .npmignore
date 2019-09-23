@@ -18,3 +18,8 @@ dist-test
 
 # output of `npm pack`
 forfuture-migrate-*.tgz
+
+# misc.
+_resources
+.*.js
+.*.yml
