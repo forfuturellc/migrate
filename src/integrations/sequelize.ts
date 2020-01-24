@@ -115,6 +115,7 @@ export class SequelizeIntegration {
         });
 
         await this.Model.bulkCreate(migrations, {
+            hooks: false,
             transaction: this.transaction,
         });
         await this.transaction.commit();

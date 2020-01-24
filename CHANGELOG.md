@@ -6,6 +6,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+Fixed:
+
+- Sequelize hooks should **not** execute hooks when executing model operations.
+
 
 ## 0.2.2 - 2019-09-23
 

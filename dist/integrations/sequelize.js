@@ -90,6 +90,7 @@ class SequelizeIntegration {
                 migratedAt: new Date(),
             });
             yield this.Model.bulkCreate(migrations, {
+                hooks: false,
                 transaction: this.transaction,
             });
             yield this.transaction.commit();
