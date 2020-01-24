@@ -63,9 +63,9 @@ $ npx migrate --help
 $ npm install @forfuture/migrate
 
 # From GitLab:
-# Replace 'v0.2.2' with the latest version.
+# Replace 'v0.2.3' with the latest version.
 # See git tags.
-$ npm install gitlab:forfuture/migrate#v0.2.2
+$ npm install gitlab:forfuture/migrate#v0.2.3
 ```
 
 
