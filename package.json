@@ -2,11 +2,24 @@
     "name": "@forfuture/migrate",
     "version": "0.2.3",
     "description": "Database-agnostic Migration framework",
+    "homepage": "https://gitlab.com/forfuture/migrate",
+    "license": "MIT",
     "author": {
         "name": "forfuture",
         "email": "we@forfuture.co.ke",
         "url": "https://forfuture.tech"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/forfuture/migrate.git"
+    },
+    "bugs": {
+        "url": "https://gitlab.com/forfuture/migrate/issues"
+    },
+    "keywords": [
+        "migration",
+        "database"
+    ],
     "main": "dist/lib/index",
     "bin": {
         "migrate": "bin/migrate"
